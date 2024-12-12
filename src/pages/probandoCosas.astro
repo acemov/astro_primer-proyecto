@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Enlaces from "./enlaces.astro";
+import "../styles/global.css";
+
+const Animales = ["Perro", "Gato", "Ornitorrinco"];
+const SoyUnDiv = "div"
+const RenombreLosEnlaces = Enlaces
+let elAnimalEstaVivo = false;
+let SegundoNombre = "Emanuel";
+let color = "red"
+---
+
+<Layout>
+    <h1>Hola! Mi segundo nombres es {SegundoNombre}</h1>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate
+        voluptas tempore blanditiis eius ut consequatur temporibus nobis
+        deserunt praesentium eos! Aliquid inventore cumque deleniti labore
+        accusamus nisi aspernatur? Doloribus, saepe?
+    </p>
+    <button id="boton">Auto saludo</button>
+    <h3>Lista de Animales</h3>
+    <ul>
+        {Animales.map((animal) => <li>{animal}</li>)}
+    </ul>
+    {elAnimalEstaVivo && <p>Si esta VIVO 👍</p>}
+    {
+        elAnimalEstaVivo ? (
+            <p>Si esta VIVO 👍</p>
+        ) : (
+            <p>Esta vivo pero no por mucho tiempo 🥲</p>
+        )
+    }
+    <SoyUnDiv style={`--myVar:${SoyUnDiv}`}><span class="h">H</span>ola soy un DIV</SoyUnDiv>
+    
+
+
+
+
+
+
+    <RenombreLosEnlaces />
+
+    <style define:vars={{color}}>
+        .h{
+            color: var(--color);
+        }
+        SoyUnDiv{
+            background-color: aqua;
+        }
+    </style>
+    <script>
+        function Saludo() {
+            alert("Hola! Comó estas?");
+        }
+        document.getElementById("boton")?.addEventListener("click", Saludo);
+    </script>
+</Layout>

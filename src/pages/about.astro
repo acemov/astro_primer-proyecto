@@ -1,0 +1,84 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Enlaces from "./enlaces.astro";
+import '../styles/global.css';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+let nombre = "franco";
+const pageTitle = "Sobre mi";
+
+const identity = {
+    firstName: "Sarah",
+    country: "Canada",
+    occupation: "Escritor técnico",
+    hobbies: ["fotografia", "observación de aves", "peñarol"],
+};
+
+const skills = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Astro",
+    "Redacción de documentos",
+];
+const happy = true;
+const finished = false;
+const goal = 3;
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
+<Layout>
+    <h1>Mi primera pagina con astro</h1>
+    <h2>Y mi nombre es {nombre}</h2>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+        laboriosam, nesciunt placeat animi esse voluptates excepturi. Dicta
+        impedit quia qui. Et impedit distinctio maxime excepturi repellendus
+        laudantium accusantium veniam molestias!
+    </p>
+    <p>He aquí algunos datos sobre mí:</p>
+    <ul>
+        <li>Me llamo {identity.firstName}.</li>
+        <li>
+            Vivo en {identity.country} y trabajo como {identity.occupation}.
+        </li>
+        {
+            identity.hobbies.length >= 3 && (
+                <li>
+                    Dos de mis aficiones son: {identity.hobbies[0]} y{" "}
+                    {identity.hobbies[1]}
+                </li>
+            )
+        }
+    </ul>
+    <p>Mis habilidades son:</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+    {finished && <p>¡He terminado este tutorial!</p>}
+    {
+        goal === 3 ? (
+            <p>Mi objetivo es terminar en 3 días.</p>
+        ) : (
+            <p>Mi objetivo no son 3 días.</p>
+        )
+    }
+    <Enlaces />
+    <style define:vars={{ skillColor, fontWeight, textCase }}>
+        h1 {
+            color: purple;
+            font-size: 4rem;
+        }
+        .skill {
+            color: var(--skillColor);
+            font-weight: var(--fontWeight);
+            text-transform: var(--textCase);
+        }
+    </style>
+</Layout>
