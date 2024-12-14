@@ -1,6 +1,6 @@
 {
   "name": "technological-telescope",
-  "type": "module",
+  "type": "commonjs",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
